@@ -1,0 +1,23 @@
+<table>
+    <thead>
+        <th>_id</th>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Image</th>
+        <th>Creator</th>
+        <th>Actions</th>
+    </thead>
+    <tbody>
+       <tr *ngFor="let post of postList">
+           <td>{{post._id}}</td>
+           <td>{{post.title}}</td>
+           <td>{{post.content}}</td>
+           <td><img src="{{post.imagePath}}" alt="{{post.title}}"></td>
+           <td>{{post.creator}}</td>
+           <td>
+               <button class="btn btn-default" (click)="goToDetails(post._id)"> Details </button>
+               <button class="btn btn-danger" (click)=onDelete(post._id)> Delete </button>
+           </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,91 @@
+<income-counter></income-counter>
+<!-- Row -->
+<div class="row">
+    <div class="col-lg-6 col-md-5" *ngIf="AppliancesConsumption != null" >
+      <div class="card" style="height: 30rem;">
+            <div class="card-body">
+                <div class="d-flex flex-wrap">
+                    <div>
+                        <h4 class="card-title">Top appliances</h4>
+                    </div>
+                </div>
+                    <h6 class="card-subtitle">Displaying the most used appliances</h6>
+              <canvas baseChart height="130px" [data]="AppliancesConsumption" [labels]="AppliancesList" [legend]="Legend" [chartType]="'polarArea'" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)" [colors]="[{backgroundColor: ['#f6e186', '#92d6af', '#90a4ae', '#99cbec', '#f62d51']}]">
+                    </canvas>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-5">
+        <!-- Column -->
+      <div class="card" style="height: 30rem;">
+        <div class="card-body">
+          <h4 class="card-title">Last Chatbot Alerts</h4>
+          <div class="table-responsive">
+            <table class="table" *ngIf="tableData1">
+              <thead>
+              <tr>
+                <th>{{tableData1.headerRow[0]}}</th>
+                <th>{{tableData1.headerRow[1]}}</th>
+                <th>{{tableData1.headerRow[2]}}</th>
+                <th>{{tableData1.headerRow[3]}}</th>
+                <th class="text-right">{{ tableData1.headerRow[4] }}</th>
+                <th class="text-right">{{ tableData1.headerRow[5] }}</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let row of tableData1.dataRows">
+                <td class="text-center">{{row.AlertId}}</td>
+                <td>{{row.AlertText}}</td>
+                <td>{{row.AlertType}}</td>
+                <td>{{row.CreatedAt}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div></div>
+      </div>
+        <!-- Column -->
+        <!-- Column -->
+    </div>
+  <div class="col-lg-6 col-md-5">
+    <div class="card">
+      <div class="card-body">
+            <h4 class="card-title">Last Month Consumption</h4>
+    <div class="barchrt" style="height:400px;">
+      <x-chartist class="" [data]="data" [type]="type" [options]="options" [responsiveOptions]="responsiveOptions"> </x-chartist>
+    </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6 col-md-5">
+    <!-- Column -->
+    <div class="card" style="height: 29.5rem;">
+      <div class="card-body">
+        <h4 class="card-title">Your Appliances Status</h4>
+        <div class="table-responsive">
+          <table class="table" *ngIf="tableData2">
+            <thead>
+            <tr>
+              <th>{{tableData2.headerRow[0]}}</th>
+              <th>{{tableData2.headerRow[1]}}</th>
+              <th>{{tableData2.headerRow[2]}}</th>
+              <th>{{tableData2.headerRow[3]}}</th>
+            </tr>
+            </thead>
+            <tbody *ngFor="let row of Appliances">
+            <tr *ngFor="let row1 of tableData2.dataRows">
+              <td *ngIf="row.appliance_id == row1.appliance_id" class="text-center">{{row.appliance_id}}</td>
+              <td *ngIf="row.appliance_id == row1.appliance_id">{{row.appliance_type}}</td>
+              <td *ngIf="row.appliance_id == row1.appliance_id && row1.appliance_status == 'on'" style="color: green"><i class="fa fa-check"></i></td>
+              <td *ngIf="row.appliance_id == row1.appliance_id && row1.appliance_status == 'off'" style="color: red"><i class="fa fa-power-off"></i></td>
+              <td *ngIf="row.appliance_id == row1.appliance_id">{{row.consumption}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div></div>
+    </div>
+    <!-- Column -->
+    <!-- Column -->
+  </div>
+
+</div>

@@ -1,0 +1,78 @@
+<div class="row">
+<!-- Column -->
+<div class="col-lg-3 col-md-6">
+    <div class="card">
+        <div class="card-body">
+            <!-- Row -->
+            <div class="row">
+                <div class="col-10">
+                    <h2>{{gaugeValue}} KWh<i class="ti-angle-down font-14 text-danger"></i></h2>
+                    <small>{{consumptionGaugeValue}} TND</small><small> From 1/{{date | date:'MM'}}/{{date | date: 'yyyy'}} To {{date | date: 'dd'}}/{{date | date:'MM'}}/{{date | date: 'yyyy'}}</small>
+                </div>
+                <div class="col-2 align-self-center text-right  p-l-0">
+                  <img src="../../../../assets/images/consommation.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Column -->
+<div class="col-lg-3 col-md-6">
+    <div class="card">
+        <div class="card-body">
+            <!-- Row -->
+            <div class="row">
+                <div class="col-8" *ngIf="percent < 50 ">
+                    <h2 style="color: #5ddd00">{{percent}} % <i class="ti-angle-up font-14 text-success"></i></h2>
+                    <h6>Monthly consumption goal</h6>
+                </div>
+              <div class="col-8" *ngIf="percent < 75 && percent > 50">
+                <h2 style="color: #ff7e10">{{percent}} % <i class="ti-angle-up font-14 text-success"></i></h2>
+                <h6>Monthly consumption goal</h6>
+              </div>
+              <div class="col-8" *ngIf="percent > 75">
+                <h2 style="color: #ff1d10">{{percent}} % <i class="ti-angle-up font-14 text-success"></i></h2>
+                <h6>Monthly consumption goal</h6>
+              </div>
+                <div class="col-4 align-self-center text-right p-l-0">
+                  <img src="../../../../assets/images/goal.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Column -->
+<div class="col-lg-3 col-md-6">
+    <div class="card">
+        <div class="card-body">
+            <!-- Row -->
+            <div class="row">
+                <div class="col-8">
+                    <h2>{{realTimeValue}} <i class="ti-angle-up font-14 text-success"></i></h2>
+                    <h6>Real time Consumption</h6>
+                </div>
+                <div class="col-4 align-self-center text-right p-l-0">
+                  <img src="../../../../assets/images/realTime.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Column -->
+<div class="col-lg-3 col-md-6">
+    <div class="card">
+        <div class="card-body">
+            <!-- Row -->
+            <div class="row">
+                <div class="col-8">
+                    <h2>323 Dt<i class="ti-angle-down font-14 text-danger"></i></h2>
+                    <h6>Your next Bill</h6>
+                </div>
+                <div class="col-4 align-self-center text-right p-l-0">
+                  <img src="../../../../assets/images/prediction.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

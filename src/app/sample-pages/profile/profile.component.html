@@ -1,0 +1,153 @@
+<div class="row">
+    <!-- Column -->
+    <div class="col-lg-4 col-xlg-3 col-md-5">
+        <div class="card">
+            <div class="card-body">
+                <div class="m-t-30 text-center"> <img src="assets/images/avatar1.png" class="img-circle" width="150" />
+                    <h4 class="card-title m-t-10">{{FirstNameInfo}} {{LastNameInfo}}</h4>
+                    <h6 class="card-subtitle">{{AccountType}} at {{companyName}}</h6>
+                </div>
+            </div>
+            <div>
+                <hr> </div>
+            <div class="card-body"> <small class="text-muted">Email address </small>
+                <h5>{{EmailInfo}}</h5> <hr>
+            </div>
+            <div class="card-body">
+              <h6>Change Password</h6><br>
+              <form [formGroup]="changePassword" (submit)="OnChangePassword()">
+
+                  <label class="bmd-label-floating">Old Password </label>
+                  <input type="password" class="form-control" formControlName="oldPassword">
+                  <label class="bmd-label-floating">New Password</label>
+                  <input type="password" class="form-control" formControlName="newPassword">
+                  <label class="bmd-label-floating">Repeat Password</label>
+                  <input type="password" class="form-control" formControlName="repeatPassword"><br><br>
+                <button class="btn btn-outline-primary"><i class="fa fa-check">Submit</i></button>
+              </form>
+            </div>
+        </div>
+    </div>
+    <!-- Column -->
+    <!-- Column -->
+    <div class="col-lg-8 col-xlg-9 col-md-7">
+        <div class="card">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs profile-tab" role="tablist">
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#settings" role="tab">Settings</a> </li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane active" id="home" role="tabpanel">
+                    <div class="card-body">
+                        <div class="profiletimeline">
+                            <div class="sl-item">
+                                <div class="sl-right">
+                                    <div><a href="#" class="link">Edit Profile</a>
+                                        <div class="row">
+                                          <form [formGroup]="update" (submit)="UpdateSubmit()">
+                                            <hr>
+                                            <div class="form-body">
+                                              <div class="card-body">
+                                                <div class="row p-t-20">
+                                                  <div class="col-md-6">
+                                                    <div class="form-group">
+                                                      <label class="control-label">Company (disabled)</label>
+                                                      <input type="text" id="company" class="form-control" placeholder="{{companyName}}" disabled>
+                                                    </div>
+                                                  </div>
+                                                  <!--/span-->
+                                                  <div class="col-md-6">
+                                                    <div class="form-group has-success">
+                                                      <label class="control-label">First Name</label>
+                                                      <input type="text" id="firstname" class="form-control form-control-danger" placeholder="John" formControlName="FirstName">
+                                                    </div>
+                                                  </div>
+                                                  <!--/span-->
+                                                </div>
+                                                <!--/row-->
+                                                <div class="row">
+                                                  <div class="col-md-6">
+                                                    <div class="form-group has-success">
+                                                      <label class="control-label">Last Name</label>
+                                                      <input type="text" id="lastName" class="form-control form-control-danger" placeholder="Doe" formControlName="LastName">
+                                                       </div>
+                                                  </div>
+                                                  <!--/span-->
+                                                  <div class="col-md-6">
+                                                    <div class="form-group has-success">
+                                                      <label class="control-label">Email</label>
+                                                      <input type="text" id="email" class="form-control form-control-danger" placeholder="example@email.com" formControlName="Email">
+                                                    </div>
+                                                  </div>
+                                                  <button class="btn btn-outline-primary"><i class="fa fa-check">Submit</i></button>
+
+                                                  <!--/span-->
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="sl-item">
+                                <div class="sl-right">
+                                  <div class="sl-item">
+                                    <div class="sl-right">
+                                      <div>
+
+                                    <h5>Summary Frequency ( <a href="#" class="link">ChatBot settings</a> )</h5>
+
+                                      <div class="custom-control custom-radio">
+                                        <input type="radio" id="weekly" name="customRadio" value="weekly" class="custom-control-input" #weekly (click)="OnFrequency(weekly.value)">
+                                        <label class="custom-control-label" for="weekly">Weekly</label>
+                                      </div>
+                                      <div class="custom-control custom-radio">
+                                        <input type="radio" id="daily" value="daily" name="customRadio" class="custom-control-input" #daily (click)="OnFrequency(daily.value)">
+                                        <label class="custom-control-label" for="daily">Daily</label>
+                                      </div>
+                                      <div class="custom-control custom-radio">
+                                        <input type="radio" id="Monthly" value="monthly" name="customRadio" #monthly (click)="OnFrequency(monthly.value)" class="custom-control-input">
+                                        <label class="custom-control-label" for="Monthly">Monthly</label>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                                </div>
+                            </div>
+                            <hr>
+                          <form [formGroup]="upload" (submit)="UploadSubmit()">
+                            <div class="sl-item">
+                                <div class="sl-right">
+                                  <div><a href="#" class="link"><h3 class="fa fa-calendar"> Monthly Goal (TND)</h3></a><br>
+
+                                    <input type="number" class="form-control" formControlName="Goal">
+
+                                  </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="sl-item">
+                              <h5>Do not disturb !</h5>
+                                  <div class="col-5">
+                                    <p>From</p>
+                                    <input class="form-control" type="time" formControlName="DoNotDisturbFrom">
+                                  </div>
+                                  <div class="col-5">
+                                    <p>To</p>
+                                    <input class="form-control" type="time" formControlName="DoNotDisturbTo">
+                                  </div><br>
+                              <button class="btn btn-outline-primary"><i class="fa fa-check">Submit</i></button>
+                            </div>
+                          </form>
+                    </div>
+                </div>
+                <!--second tab-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Column -->
+</div>

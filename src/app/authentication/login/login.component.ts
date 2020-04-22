@@ -1,0 +1,64 @@
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormControl, FormGroup,FormBuilder, Validators} from '@angular/forms';
+import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import { LoginService } from './login.service'
+
+@Component({
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.css']
+})
+export class LoginComponent implements OnInit {
+  constructor(public router: Router,private formBuilder: FormBuilder,private auth: LoginService) {
+    if (this.auth.isLoggedIn()) {
+      this.router.navigate(['home/']);
+    } else {
+      this.router.navigate(['authentication/login']);
+    }
+  }
+  logiin: FormGroup;
+
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email,
+  ]);
+
+  validEmailLogin: boolean = false;
+  validPasswordLogin: boolean = false;
+
+
+    ngOnInit() {
+      this.logiin = this.formBuilder.group({
+        // To add a validator, we must first convert the string value into an array. The first item in the array is the default value if any, then the next item in the array is the validator. Here we are adding a required validator meaning that the firstName attribute must have a value in it.
+        Email: [null, [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]],
+        // We can use more than one validator per field. If we want to use more than one validator we have to wrap our array of validators with a Validators.compose function. Here we are using a required, minimum length and maximum length validator.
+        Password: ['', Validators.required]
+      });
+    }
+  onLogin() {
+    console.log(this.logiin.value);
+    if (this.logiin.valid) {
+      // console.log('form submitted');
+      // console.log(this.login.value);
+      this.auth.verifylogin(this.logiin.value)
+        .subscribe(res => {
+          if (res !== 'Incorrect Credentials') {
+            console.log(res);
+            localStorage.setItem('token', res['token']);}
+          this.router.navigate(['home/']);
+          console.log(localStorage);
+          // console.log('this.router.navigate');
+
+          // console.log(res)
+        })
+    }
+
+
+  }
+  onLogout()
+  {
+    this.auth.logOut();
+    console.log(localStorage.length);
+  }
+}

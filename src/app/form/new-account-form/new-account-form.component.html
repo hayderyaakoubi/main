@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-12">
+      <div class="card">
+          <div class="card-body">
+              <h4 class="card-title">create a new account</h4>
+
+              <form [formGroup]="type" (ngSubmit)="onSubmit()">
+                  <div>
+                      <div class="form-group">
+                          <label for="Firstname">First name</label>
+                          <input id="Firstname" name="firstname" class="form-control" formControlName="FirstName">
+                      </div>
+                      <div class="form-group">
+                          <label for="lastname">Last name</label>
+                          <input id="lastname" class="form-control" name="lastname" formControlName="LastName"> </div>
+
+                      <div class="form-group">
+                          <label for="email">Email</label>
+                          <input id="email" name="email" class="form-control" formControlName="Email">
+
+                      </div>
+                  </div>
+                  <div class="submitted-message">
+                      <button class="btn btn-inverse">Add</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+    </div>
+  </div>

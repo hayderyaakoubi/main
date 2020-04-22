@@ -1,0 +1,16 @@
+
+<form [form-group]="updateForm" (ngSubmit)="onSubmit()" >
+
+  <label>Title</label>
+  <input type="text" formControlName="title">
+
+  <label>Content</label>
+  <textarea type="text" formControlName="content">
+  
+  <label>Title</label>
+  <input type="file" formControlName="title" (change)="onFileSelect($event)">
+  
+
+  <button type="submit" class="btn bnt-success" >Save</button>
+  <button type="reset" class="btn bnt-warning">Reset</button>
+</form>

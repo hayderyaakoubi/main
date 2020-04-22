@@ -1,0 +1,32 @@
+[
+    {
+      "Bill_id" : 1,
+      "From" : "01-01-2018",
+      "To" : "01-03-2018",
+      "Amount" : 418,
+      "PaymentStatus" : "False",
+      "PaymentDate" : null,
+      "CreatedAt" : "04-02-2018",
+      "Status" : "True"
+    },
+  {
+    "Bill_id" : 1,
+    "From" : "01-01-2018",
+    "To" : "01-03-2018",
+    "Amount" : 418,
+    "PaymentStatus" : "False",
+    "PaymentDate" : null,
+    "CreatedAt" : "04-02-2018",
+    "Status" : "True"
+  },
+  {
+    "Bill_id" : 1,
+    "From" : "01-01-2018",
+    "To" : "01-03-2018",
+    "Amount" : 418,
+    "PaymentStatus" : "False",
+    "PaymentDate" : null,
+    "CreatedAt" : "04-02-2018",
+    "Status" : "True"
+  }
+]
